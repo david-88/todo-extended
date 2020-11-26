@@ -1,1 +1,1 @@
-console.log("this works");
+(()=>{"use strict";var e=function(e){this.htmlElement=e,this.onClickAddTask=null};e.prototype.render=function(e){e.forEach((function(e){var n=document.createElement("p");n.innerHTML=e,this.htmlElement.appendChild(n)})).bind(this),this.htmlElement.querySelector("#addTask").addEventListener("click",this.onClickAddTask)};var n=new e(document.getElementById("container"));n.onClickAddTask=function(){},n.render(["dfdsfsdfsdf","23432423432df"])})();
