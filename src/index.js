@@ -1,47 +1,92 @@
 //import {test} from './domStuff';
 
-const TasksView = function (htmlElement, addButton, inputField) {
+const tasksViewFactory = function (htmlElement, addButton, inputField) {
+    let newTaskText = null;
+    let onClickAddTask = null;
+    function initialize() {
+        this.addButton.addEventListener('click', this.onClickAddTask);
+    };
+    function renderExistingTasks(viewModel) {
+        this.htmlElement.innerHTML = '';
+        viewModel.forEach(renderOneTask, this);
+    };
+    function renderNewTask() {
+        this.newTaskText = this.inputField.value;
+        this.inputField.value = '';
+        const renderCurrentTask = renderOneTask.bind(this);
+        renderCurrentTask(this.newTaskText);
+    };
+    function renderOneTask(task) {
+        const p = document.createElement("p");
+        p.innerHTML = task;
+        this.htmlElement.appendChild(p);
+    };
+    return {
+        htmlElement, addButton, inputField, newTaskText, onClickAddTask,
+        initialize, renderExistingTasks, renderNewTask
+    }
+}
+
+/*const TasksView = function (htmlElement, addButton, inputField) {
     this.htmlElement = htmlElement;
     this.addButton = addButton;
     this.inputField = inputField;
     this.newTaskText = null;
     this.onClickAddTask = null;
 }
-
 TasksView.prototype.initialize = function () {
     this.addButton.addEventListener('click', this.onClickAddTask);
 };
-
 TasksView.prototype.renderExistingTasks = function (viewModel) {
     this.htmlElement.innerHTML = '';
     viewModel.forEach(this.renderOneTask.bind(this));
 }
-
 TasksView.prototype.renderNewTask = function () {
     this.newTaskText = this.inputField.value;
     this.inputField.value = '';
     this.renderOneTask(this.newTaskText);
 }
-
 TasksView.prototype.renderOneTask = function (task) {
     const p = document.createElement("p");  
     p.innerHTML = task;
     this.htmlElement.appendChild(p);
+}*/
+
+const tasksModelFactory = function (data) {
+    const addTask = function (newTask) {
+        data.push(newTask);
+    }
+    return { data, addTask }
 }
 
-const TasksModel = function (data) {
+/*const TasksModel = function (data) {
     this.data = data;
     this.addTask = function (newTask) {
         this.data.push(newTask);
     }
+}*/
+
+const tasksControllerFactory = function (tasksView, tasksModel) {
+
+    function onClickAddTask() {
+        tasksView.renderExistingTasks(tasksModel.data);
+        tasksView.renderNewTask();
+        tasksModel.addTask(tasksView.newTaskText);
+    }
+    function initialize() {
+        tasksView.onClickAddTask = onClickAddTask;
+        tasksView.initialize();
+    }
+    return { initialize }
 }
 
-const TasksController = function (tasksView, tasksModel) {
+/*const TasksController = function (tasksView, tasksModel) {
     this.tasksView = tasksView;
     this.tasksModel = tasksModel;
 }
 
 TasksController.prototype.onClickAddTask = function () {
+    console.log('in onClickAddTask');
     this.tasksView.renderExistingTasks(this.tasksModel.data);
     this.tasksView.renderNewTask();
     this.tasksModel.addTask(this.tasksView.newTaskText);
@@ -50,18 +95,17 @@ TasksController.prototype.onClickAddTask = function () {
 TasksController.prototype.initialize = function () {
     this.tasksView.onClickAddTask = this.onClickAddTask.bind(this);
     this.tasksView.initialize();
-};
-
+};*/
 
 const targetElement = document.getElementById('taskContainer');
-const targetButton =  document.getElementById('addTask');
+const targetButton = document.getElementById('addTask');
 const targetField = document.getElementById('taskInput');
-const tasksView = new TasksView (targetElement, targetButton, targetField);
+const tasksView = tasksViewFactory(targetElement, targetButton, targetField);
 
 const initialData = [];
-const tasksModel = new TasksModel(initialData);
+const tasksModel = tasksModelFactory(initialData);
 
-const tasksController = new TasksController(tasksView, tasksModel);
+const tasksController = tasksControllerFactory(tasksView, tasksModel);
 tasksController.initialize();
 
 /*Zum Testen unabhängig von Controller und Model ob View geht
@@ -87,23 +131,23 @@ taskView.render(testModel);*/
 
 1. Describe in your own words what this app should look like and do
 
-    - Look and Feel: 
+    - Look and Feel:
         Top      - task input field with add button
             Later: search field
-        Mid      -tasks with delete button 
+        Mid      -tasks with delete button
             Headline with current Listname and editButton/deleteButton
-        Right    - clicked task 
+        Right    - clicked task
             TaskName editable
             TaskNotes editable
             Later: change to Project button
-        Left     - lists container    
+        Left     - lists container
             List input field with add button
             Current list highlighted
-    
-    - Start screen: 
+
+    - Start screen:
         Defaults to Inbox list
 
-    - Do: 
+    - Do:
 
         Create task after user entered one and pressed on add
         Delete task after user clicked on delete of one task
@@ -117,11 +161,11 @@ taskView.render(testModel);*/
         Create list after user entered one and pressed on add
         Make listName editable after user clicked on editButton
             Rename listName after user pressed enter
-        Check after user clicked on deleteButton: tasks in this list? 
+        Check after user clicked on deleteButton: tasks in this list?
             If yes ask user if really delete it with all containing tasks
                 If yes delete list with all containing taks
                 If no forget about delete wish of user
-            If no delete list 
+            If no delete list
 
         Later: keep the deleted tasks of the last 3 days in a deletedlist
         --> User can somehow undo deletion
@@ -131,11 +175,11 @@ taskView.render(testModel);*/
 - index.js for initializing and connecting everything
         import functions from domStuff
         import functions from todoController
-        call renderStartpage 
-        create 
+        call renderStartpage
+        create
 
 - Module for taskModel
-    attr: taskID 
+    attr: taskID
     attr: taskName
     attr: taskNote
 
@@ -208,11 +252,11 @@ taskView.render(testModel);
     - index.js for initializing and connecting everything
         import functions from domStuff
         import functions from todoController
-        call renderStartpage 
-        create 
+        call renderStartpage
+        create
 
     - Module for taskFactory
-        attr: taskID 
+        attr: taskID
         attr: taskName
         attr: taskNote
 
@@ -224,7 +268,7 @@ taskView.render(testModel);
         func: getTaskNote
         func: deleteTask
 
-    - Module for listFactory 
+    - Module for listFactory
         attr: lListID
         attr: listName
         attr: assignedTasks(array or object?)
@@ -232,7 +276,7 @@ taskView.render(testModel);
         func: addTask
         func: removeTask
         func: changeOrderAssigendTasks(task, new place)
-        func: setListID 
+        func: setListID
         func: getListID
         func: setListName
         func: getListName
@@ -240,7 +284,7 @@ taskView.render(testModel);
 
     - Module for renderStartUI
         attr: assignedTasksToList (to all created lists? Or only active one?)
-        func: renderStartPage 
+        func: renderStartPage
                 call renderListTabs
                 call renderActiveListTasks(inbox)
                 call highlightActiveListTab
@@ -253,7 +297,7 @@ taskView.render(testModel);
             call addListenerToLists
             call
             call
-        func: listenToLists        --> call renderAsignedTasks 
+        func: listenToLists        --> call renderAsignedTasks
                                    --> call highlightActiveListTab
         func: listenToOneTask(cl)  --> call renderTaskDetails
         func: listenToOneTaks(clh) --> call moveTask
@@ -271,12 +315,12 @@ taskView.render(testModel);
                                  --> delete task from assignedTaskstoList
         func: moveTaskInList --> change assigned tasks order in temporarily generated array
                                  render the tasks appropriately (rendering all new needed?)
-            
-    - Module for todoController 
+
+    - Module for todoController
 
         func: addTask         --> create new task object with taskFactory
                               --> call addTasktoView from domStuff
-                              --> put reference to created task into the right list 
+                              --> put reference to created task into the right list
                               (--> call storeTask from taskStorage)
 
         func: deleteTask(task)--> delete task object
@@ -285,16 +329,16 @@ taskView.render(testModel);
                               (--> call deleteTask from taskStorage)
 
         func: moveTask        --> if inside: call moveTaskinList from domStuff
-                                             call list.changeOrderAssignedTasks 
-                                             
-                              --> if outside: call newList.addTask 
+                                             call list.changeOrderAssignedTasks
+
+                              --> if outside: call newList.addTask
                                               call oldList.deleteTask
 
 
         func: addList         --> create new list object with listFactory
         func: list.delete
         func: validateListDelete
-        func: validateListEdit        
+        func: validateListEdit
 
 
     - At the end: Module for taskStorage
@@ -306,12 +350,12 @@ taskView.render(testModel);
 
 3. Divide your plan further and code
 
-    Kommt das ganze validation Zeugs als best practice in die setter der objects rein? 
+    Kommt das ganze validation Zeugs als best practice in die setter der objects rein?
     Von meinem Verständnis her ja --> Also validation methods oben entsprechend abändern/verschieben.
 
     - Validate: is there a taskName or listName entered?
 
-    Falls ich assigendTasks mit object löse --> Reihenfolge fürs Rendern? 
+    Falls ich assigendTasks mit object löse --> Reihenfolge fürs Rendern?
     Wie die Reihe ist? Oder noch extra attribute wie z.B. Nummer/platz hinzufügen?
 
 */
