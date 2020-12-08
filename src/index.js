@@ -3,30 +3,95 @@
 const tasksViewFactory = function (htmlElement, addButton, inputField) {
     let newTaskText = null;
     let onClickAddTask = null;
+    let onClickDeleteTask = null;
     function initialize() {
         this.addButton.addEventListener('click', this.onClickAddTask);
     };
+    function setNewTaskText () {
+        this.newTaskText = this.inputField.value;
+    }
     function renderExistingTasks(viewModel) {
+        this.inputField.value = '';
         this.htmlElement.innerHTML = '';
         viewModel.forEach(renderOneTask, this);
     };
-    function renderNewTask() {
-        this.newTaskText = this.inputField.value;
-        this.inputField.value = '';
-        const renderCurrentTask = renderOneTask.bind(this);
-        renderCurrentTask(this.newTaskText);
-    };
-    function renderOneTask(task) {
-        const p = document.createElement("p");
-        p.innerHTML = task;
+    function renderOneTask(taskObject) {
+        const taskID = taskObject.id;
+        const p = document.createElement('p');
+        const deleteButton = document.createElement('button')
+
+        deleteButton.innerHTML = 'del';
+        deleteButton.dataset.taskid = taskID;
+        deleteButton.addEventListener('click', this.onClickDeleteTask);
+
+        p.innerHTML = taskObject.text;
+        p.appendChild(deleteButton);
+
         this.htmlElement.appendChild(p);
     };
     return {
-        htmlElement, addButton, inputField, newTaskText, onClickAddTask,
-        initialize, renderExistingTasks, renderNewTask
+        htmlElement, addButton, inputField, newTaskText, onClickAddTask, onClickDeleteTask,
+        initialize, renderExistingTasks, setNewTaskText
     }
 }
 
+const tasksModelFactory = function (data) {
+    let creationCounter = 0;
+    const addTask = function (taskText) {
+            const newTaskObject = {
+                id :  this.creationCounter,
+                text: taskText
+            }
+            data.push(newTaskObject);
+            this.creationCounter++;
+    }
+    const deleteTask = function (taskObjectID) {
+        taskObjectID = parseInt(taskObjectID);
+        const indexTaskToDelete = data.findIndex(function(currentTask) {
+            if (currentTask.id === taskObjectID){
+                return true;
+            }
+        })
+        data.splice(indexTaskToDelete, 1);
+    }
+    return { data, addTask, deleteTask, creationCounter }
+}
+
+const tasksControllerFactory = function (tasksView, tasksModel) {
+
+    function onClickAddTask() {
+        tasksView.setNewTaskText();
+        tasksModel.addTask(tasksView.newTaskText);
+        tasksView.renderExistingTasks(tasksModel.data);       
+    }
+    function onClickDeleteTask(event) {
+        const taskToDeleteID = event.target.dataset.taskid;
+        //Delete Task from Model
+        tasksModel.deleteTask(taskToDeleteID);
+        tasksView.renderExistingTasks(tasksModel.data);
+        
+    }
+    function initialize() {
+        tasksView.onClickAddTask = onClickAddTask;
+        tasksView.onClickDeleteTask = onClickDeleteTask;
+        tasksView.initialize();
+    }
+    return { initialize }
+}
+
+const targetElement = document.getElementById('taskContainer');
+const targetButton = document.getElementById('addTask');
+const targetField = document.getElementById('taskInput');
+const tasksView = tasksViewFactory(targetElement, targetButton, targetField);
+
+const initialData = [];
+const tasksModel = tasksModelFactory(initialData);
+
+const tasksController = tasksControllerFactory(tasksView, tasksModel);
+tasksController.initialize();
+
+
+//Old constructor Code rewritten above into Factory functions
 /*const TasksView = function (htmlElement, addButton, inputField) {
     this.htmlElement = htmlElement;
     this.addButton = addButton;
@@ -52,33 +117,12 @@ TasksView.prototype.renderOneTask = function (task) {
     this.htmlElement.appendChild(p);
 }*/
 
-const tasksModelFactory = function (data) {
-    const addTask = function (newTask) {
-        data.push(newTask);
-    }
-    return { data, addTask }
-}
-
 /*const TasksModel = function (data) {
     this.data = data;
     this.addTask = function (newTask) {
         this.data.push(newTask);
     }
 }*/
-
-const tasksControllerFactory = function (tasksView, tasksModel) {
-
-    function onClickAddTask() {
-        tasksView.renderExistingTasks(tasksModel.data);
-        tasksView.renderNewTask();
-        tasksModel.addTask(tasksView.newTaskText);
-    }
-    function initialize() {
-        tasksView.onClickAddTask = onClickAddTask;
-        tasksView.initialize();
-    }
-    return { initialize }
-}
 
 /*const TasksController = function (tasksView, tasksModel) {
     this.tasksView = tasksView;
@@ -96,34 +140,6 @@ TasksController.prototype.initialize = function () {
     this.tasksView.onClickAddTask = this.onClickAddTask.bind(this);
     this.tasksView.initialize();
 };*/
-
-const targetElement = document.getElementById('taskContainer');
-const targetButton = document.getElementById('addTask');
-const targetField = document.getElementById('taskInput');
-const tasksView = tasksViewFactory(targetElement, targetButton, targetField);
-
-const initialData = [];
-const tasksModel = tasksModelFactory(initialData);
-
-const tasksController = tasksControllerFactory(tasksView, tasksModel);
-tasksController.initialize();
-
-/*Zum Testen unabhängig von Controller und Model ob View geht
-
-const targetElement = document.getElementById('container');
-const targetButton =  document.getElementById('addTask');
-const taskView = new TasksView(targetElement, targetButton);
-taskView.onClickAddTask =  function () {
-    const inputField = document.getElementById('inputField');
-    testModel.push(inputField);
-    this.render(testModel);
-    //DAs was in input field steht soll als neuer Task angehängt werden
-    //Die bisherigen Tasks sollen gerendert werden.
-}.bind(taskView);
-taskView.initialize();
-
-const testModel = ['dfdsfsdfsdf', '23432423432df'];
-taskView.render(testModel);*/
 
 
 
