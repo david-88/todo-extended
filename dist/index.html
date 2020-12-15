@@ -8,13 +8,17 @@
     </head>
     <body>
         <div id="container">
-            <input type="text" id="taskInput">
-            <button id="addTask">Add task</button>
-            <div id="taskContainer"></div>
+            <div id="list-container">
+                <button id="list-add">+</button>
+                <input type="text" id="list-input" placeholder="Add a list">
+                <div id="lists"></div>
+            </div>
+            <div id="task-container">
+                <button id="task-add">+</button>
+                <input type="text" id="task-input" placeholder="Add a task">
+                <div id="tasks"></div>
+            </div>
         </div>
-        <!--For testing easier to debug:
-        <script src="test.js"></script>-->
-        <!--Use this for production mode:-->
         <script src="main.js"></script>
     </body>
 </html>

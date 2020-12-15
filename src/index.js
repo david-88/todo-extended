@@ -1,23 +1,53 @@
-import {tasksViewFactory} from './tasksView';
-import {tasksModelFactory} from './tasksModel';
-import {tasksControllerFactory} from './tasksController';
+import {tasksViewFactory, listsViewFactory, itemsCreationView} from './view';
+import {tasksModelFactory, listsModelFactory, itemsCreationModel} from './model';
+import {tasksControllerFactory, listsControllerFactory, itemsCreationController} from './controller';
 
-const targetElement = document.getElementById('taskContainer');
-const targetButton = document.getElementById('addTask');
-const targetField = document.getElementById('taskInput');
-const tasksView = tasksViewFactory(targetElement, targetButton, targetField);
+//Everything for tasks
+const tasksTargetElement = document.getElementById('tasks');
+const tasksTargetButton = document.getElementById('task-add');
+const tasksTargetField = document.getElementById('task-input');
+const initialTasksData = [];
 
-const initialData = [];
-const tasksModel = tasksModelFactory(initialData);
+const tasksViewSpecifics = tasksViewFactory(tasksTargetElement, tasksTargetButton, tasksTargetField);
+const tasksCreationView = itemsCreationView ('task');
+const tasksView = Object.assign({}, tasksViewSpecifics, tasksCreationView);
 
-const tasksController = tasksControllerFactory(tasksView, tasksModel);
+const tasksModelSpecifics = tasksModelFactory();
+const tasksCreationModel = itemsCreationModel (initialTasksData);
+const tasksModel = Object.assign({}, tasksModelSpecifics, tasksCreationModel);
+
+const tasksControllerSpecifics = tasksControllerFactory();
+const tasksCreationController = itemsCreationController(tasksView, tasksModel);
+const tasksController = Object.assign({}, tasksControllerSpecifics, tasksCreationController);
+
 tasksController.initialize();
+
+//Everything for lists
+const listsTargetElement = document.getElementById('lists');
+const listsTargetButton = document.getElementById('list-add');
+const listsTargetField = document.getElementById('list-input');
+const initialListsData = [];
+
+const listsViewSpecifics = listsViewFactory(listsTargetElement, listsTargetButton, listsTargetField);
+const listsCreationView = itemsCreationView ('list');
+const listsView = Object.assign({}, listsViewSpecifics, listsCreationView);
+
+const listsModelSpecifics = listsModelFactory();
+const listsCreationModel = itemsCreationModel (initialListsData);
+const listsModel = Object.assign({}, listsModelSpecifics, listsCreationModel);
+
+const listsControllerSpecifics = listsControllerFactory();
+const listsCreationController = itemsCreationController(listsView, listsModel);
+const listsController = Object.assign({}, listsControllerSpecifics, listsCreationController);
+
+listsController.initialize();
+
 
 /*logic of todo app
 
 1. Describe in your own words what this app should look like and do
 
-    - Look and Feel:
+    - Look and Feel:    
         Top      - task input field with add button
             Later: search field
         Mid      -tasks with delete button
@@ -117,9 +147,9 @@ TasksView.prototype.render = function render(viewModel) {
     addTask.addEventListener('click', this.onClickAddTask);
 }
 
-var targetElement = document.getElementById('taskContainer');
+var tasksTargetElement = document.getElementById('taskContainer');
 
-var taskView = new TasksView(targetElement);
+var taskView = new TasksView(tasksTargetElement);
 
 taskView.onClickAddTask
 
