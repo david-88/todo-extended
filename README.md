@@ -24,6 +24,20 @@ It is a webpack project, so there are two folders: "dist" and "src".
 - webpack.config.js: Configure behaviour of webpack
 - .gitignore:     Put here all files you don't want to synch to github.
 
+# Installation requirements
+
+- You need to install git
+- You need to install npm
+- You need to install webpack
+
 # How to run this app
 
-# Installation requirements
+- Clone this Github repository into a repository on your machine
+- Install all installation requirements
+- Run `npx webpack` - This generates the latest main.js from index.js
+- Open index.html in browser of your choice
+
+# Tipps for better programming experience
+
+- Use `npx webpack --watch` - This updates main.js as soon as there is a change
+- Use live server - Then your app is updated in the browser as soon as there is a change
