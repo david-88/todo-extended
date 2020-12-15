@@ -17,12 +17,12 @@ It is a webpack project, so there are two folders: "dist" and "src".
 - reset.css:      Put here CSS to reset all CSS rules to avoid unexpected styling
 - styl.css:       Put here CSS to style the elements of the app
 
-## root-folder: 
+## "root"-folder: 
 
+- package.json:   Put dependencies here so that npm takes care of these
+- package-lock.json: Guarantees that all installs have the same dependencies versions
+- webpack.config.js: Configure behaviour of webpack
 - .gitignore:     Put here all files you don't want to synch to github.
-- package-lock.json: 
-- package.json
-- webpack.config.js
 
 # How to run this app
 
