@@ -24,17 +24,15 @@ It is a webpack project, so there are two folders: "dist" and "src".
 - webpack.config.js: Configure behaviour of webpack
 - .gitignore:     Put here all files you don't want to synch to github.
 
-# Installation requirements
 
-- You need to install git
-- You need to install npm
-- You need to install webpack
+# How to install this app on Ubuntu
 
-# How to run this app
-
-- Clone this Github repository into a repository on your machine
-- Install all installation requirements
-- Run `npx webpack` - This generates the latest main.js from index.js
+- Install git: [Follow along this guide](https://github.com/git-guides/install-git)
+- Install npm: [Follow along this guide for doing it with nvm](https://github.com/TheOdinProject/curriculum/blob/master/foundations/installations/installing_node.md)
+- Create on your local machine an empty directory called "todo-extended" (Or whatever name you like)
+- Clone this Github repository into the created directory: [Follow along this guide](https://www.techiedelight.com/clone-a-git-repository-into-specific-folder/)
+- Install webpack locally for this project: [Follow along this tutorial](https://webpack.js.org/guides/getting-started/)
+- Run `npx webpack` to generate the latest main.js from index.js
 - Open index.html in browser of your choice
 
 # Tipps for better programming experience
