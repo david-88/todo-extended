@@ -4,7 +4,8 @@
   "description": "Use Single Responsibility principle",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "todo": "npx webpack --color && firebase deploy"
   },
   "repository": {
     "type": "git",
@@ -18,10 +19,12 @@
   },
   "homepage": "https://github.com/david-88/todo#readme",
   "devDependencies": {
+    "css-loader": "^5.0.1",
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0"
   },
   "dependencies": {
-    "firebase": "^8.2.1"
+    "firebase": "^8.2.1",
+    "firebaseui": "^4.7.1"
   }
 }

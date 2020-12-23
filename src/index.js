@@ -43,6 +43,62 @@ const listsController = Object.assign({}, listsControllerSpecifics, listsCreatio
 listsController.initialize();
 
 
+// Small Firebase Test
+
+// These samples are intended for Web so this import would normally be
+// done in HTML however using modules here is more convenient for
+// ensuring sample correctness offline.
+import firebase from "firebase/app";
+import "firebase/database";
+import * as firebaseui from 'firebaseui'
+import 'firebaseui/dist/firebaseui.css'
+
+function getReference() {
+  // [START rtdb_get_reference]
+  var database = firebase.database();
+  // [END rtdb_get_reference]
+}
+
+// Initialize the FirebaseUI Widget using Firebase.
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+var uiConfig = 
+{
+    callbacks: {
+      signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+        // User successfully signed in.
+        // Return type determines whether we continue the redirect automatically
+        // or whether we leave that to developer to handle.
+        credential.user.getIdToken().then(function(token) {
+            // make api call to backend
+          })
+        return true;
+      },
+      uiShown: function() {
+        // The widget is rendered.
+        // Hide the loader.
+        // document.getElementById('loader').style.display = 'none';
+        console.log("uiShown");
+      }
+    },
+    // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+    signInFlow: 'popup',
+    // signInSuccessUrl: 'https://todo-extended.web.app/',
+    signInOptions: [
+      // Leave the lines as is for the providers you want to offer your users.
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.EmailAuthProvider.PROVIDER_ID
+    ],
+    // Terms of service url.
+    tosUrl: '<your-tos-url>',
+    // Privacy policy url.
+    privacyPolicyUrl: '<your-privacy-policy-url>'
+};
+
+// The start method will wait until the DOM is loaded.
+ui.start('#firebaseui-auth-container', uiConfig);
+
+
 /*logic of todo app
 
 1. Describe in your own words what this app should look like and do
@@ -275,18 +331,3 @@ taskView.render(testModel);
     Wie die Reihe ist? Oder noch extra attribute wie z.B. Nummer/platz hinzufügen?
 
 */
-
-
-// Small Firebase Test
-
-// These samples are intended for Web so this import would normally be
-// done in HTML however using modules here is more convenient for
-// ensuring sample correctness offline.
-import firebase from "firebase/app";
-import "firebase/database";
-
-function getReference() {
-  // [START rtdb_get_reference]
-  var database = firebase.database();
-  // [END rtdb_get_reference]
-}

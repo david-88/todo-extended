@@ -7,6 +7,11 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <!-- The surrounding HTML is left untouched by FirebaseUI.
+        Your app may use that space for branding, controls and other customizations.-->
+        <h1>Welcome to To-Do App</h1>
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader">Loading...</div>
         <div id="container">
             <div id="list-container">
                 <button id="list-add">+</button>
@@ -20,7 +25,6 @@
             </div>
         </div>
         <script src="main.js"></script>
-
         <!-- Firebase part -->
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="/__/firebase/8.2.1/firebase-app.js"></script>
