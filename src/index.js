@@ -48,16 +48,23 @@ listsController.initialize();
 // These samples are intended for Web so this import would normally be
 // done in HTML however using modules here is more convenient for
 // ensuring sample correctness offline.
-import firebase from "firebase/app";
-import "firebase/database";
-import * as firebaseui from 'firebaseui'
-import 'firebaseui/dist/firebaseui.css'
 
-function getReference() {
-  // [START rtdb_get_reference]
-  var database = firebase.database();
-  // [END rtdb_get_reference]
-}
+//
+// ToDo: we need to find a way how we can use this and that webpack can handle this
+//
+// import * as firebaseui from 'firebaseui'
+// import 'firebaseui/dist/firebaseui.css'
+
+// var firebase = require('firebase');
+// require('firebase/auth');
+var firebaseui = require('firebaseui');
+require('firebaseui/dist/firebaseui.css');
+
+// or using ES6 imports:
+// import firebase from 'firebase/app';
+// import 'firebase/auth';
+// import * as firebaseui from 'firebaseui'
+// import 'firebaseui/dist/firebaseui.css'
 
 // Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -77,7 +84,7 @@ var uiConfig =
       uiShown: function() {
         // The widget is rendered.
         // Hide the loader.
-        // document.getElementById('loader').style.display = 'none';
+        document.getElementById('loader').style.display = 'none';
         console.log("uiShown");
       }
     },
