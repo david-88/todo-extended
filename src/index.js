@@ -57,8 +57,8 @@ listsController.initialize();
 
 // var firebase = require('firebase');
 // require('firebase/auth');
-var firebaseui = require('firebaseui');
-require('firebaseui/dist/firebaseui.css');
+// const firebaseui = require('firebaseui');
+// require('firebaseui/dist/firebaseui.css');
 
 // or using ES6 imports:
 // import firebase from 'firebase/app';
@@ -76,9 +76,23 @@ var uiConfig =
         // User successfully signed in.
         // Return type determines whether we continue the redirect automatically
         // or whether we leave that to developer to handle.
-        credential.user.getIdToken().then(function(token) {
-            // make api call to backend
-          })
+        writeUserData(authResult.user.uid, authResult.user.displayName, authResult.user.email, null);
+        // console.log("Current Authentication: userid:" + authResult.userId + "user email:" + authResult.email);
+        // credential.user.getIdToken().then(function(token) {
+        //     // make api call to backend
+        //     writeUserData(authResult.userId, null, authResult.email, null);
+        //   })
+
+        // firebase.auth().createUserWithEmailAndPassword(email, password)
+        // .then((user) => {
+        //     // Signed in 
+        //     // ...
+        // })
+        // .catch((error) => {
+        //     var errorCode = error.code;
+        //     var errorMessage = error.message;
+        //     // ..
+        // });
         return true;
       },
       uiShown: function() {
@@ -105,6 +119,13 @@ var uiConfig =
 // The start method will wait until the DOM is loaded.
 ui.start('#firebaseui-auth-container', uiConfig);
 
+function writeUserData(userId, name, email, imageUrl) {
+    firebase.database().ref('users/' + userId).set({
+      username: name,
+      email: email,
+      profile_picture : imageUrl
+    });
+  }
 
 /*logic of todo app
 
