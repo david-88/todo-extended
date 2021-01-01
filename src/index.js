@@ -1,47 +1,13 @@
+// using ES6 imports:
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import { firebaseConfig } from './config'
+import * as firebaseui from 'firebaseui';
+import 'firebaseui/dist/firebaseui.css'
+
 import {tasksViewFactory, listsViewFactory, itemsCreationView} from './view';
 import {tasksModelFactory, listsModelFactory, itemsCreationModel} from './model';
 import {tasksControllerFactory, listsControllerFactory, itemsCreationController} from './controller';
-
-//Everything for tasks
-const tasksTargetElement = document.getElementById('tasks');
-const tasksTargetButton = document.getElementById('task-add');
-const tasksTargetField = document.getElementById('task-input');
-const initialTasksData = [];
-
-const tasksViewSpecifics = tasksViewFactory(tasksTargetElement, tasksTargetButton, tasksTargetField);
-const tasksCreationView = itemsCreationView ('task');
-const tasksView = Object.assign({}, tasksViewSpecifics, tasksCreationView);
-
-const tasksModelSpecifics = tasksModelFactory();
-const tasksCreationModel = itemsCreationModel (initialTasksData);
-const tasksModel = Object.assign({}, tasksModelSpecifics, tasksCreationModel);
-
-const tasksControllerSpecifics = tasksControllerFactory();
-const tasksCreationController = itemsCreationController(tasksView, tasksModel);
-const tasksController = Object.assign({}, tasksControllerSpecifics, tasksCreationController);
-
-tasksController.initialize();
-
-//Everything for lists
-const listsTargetElement = document.getElementById('lists');
-const listsTargetButton = document.getElementById('list-add');
-const listsTargetField = document.getElementById('list-input');
-const initialListsData = [];
-
-const listsViewSpecifics = listsViewFactory(listsTargetElement, listsTargetButton, listsTargetField);
-const listsCreationView = itemsCreationView ('list');
-const listsView = Object.assign({}, listsViewSpecifics, listsCreationView);
-
-const listsModelSpecifics = listsModelFactory();
-const listsCreationModel = itemsCreationModel (initialListsData);
-const listsModel = Object.assign({}, listsModelSpecifics, listsCreationModel);
-
-const listsControllerSpecifics = listsControllerFactory();
-const listsCreationController = itemsCreationController(listsView, listsModel);
-const listsController = Object.assign({}, listsControllerSpecifics, listsCreationController);
-
-listsController.initialize();
-
 
 // Small Firebase Test
 
@@ -60,11 +26,8 @@ listsController.initialize();
 // const firebaseui = require('firebaseui');
 // require('firebaseui/dist/firebaseui.css');
 
-// or using ES6 imports:
-// import firebase from 'firebase/app';
-// import 'firebase/auth';
-// import * as firebaseui from 'firebaseui'
-// import 'firebaseui/dist/firebaseui.css'
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 // Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -126,6 +89,47 @@ function writeUserData(userId, name, email, imageUrl) {
       profile_picture : imageUrl
     });
   }
+
+
+//Everything for tasks
+const tasksTargetElement = document.getElementById('tasks');
+const tasksTargetButton = document.getElementById('task-add');
+const tasksTargetField = document.getElementById('task-input');
+const initialTasksData = [];
+
+const tasksViewSpecifics = tasksViewFactory(tasksTargetElement, tasksTargetButton, tasksTargetField);
+const tasksCreationView = itemsCreationView ('task');
+const tasksView = Object.assign({}, tasksViewSpecifics, tasksCreationView);
+
+const tasksModelSpecifics = tasksModelFactory();
+const tasksCreationModel = itemsCreationModel (initialTasksData);
+const tasksModel = Object.assign({}, tasksModelSpecifics, tasksCreationModel);
+
+const tasksControllerSpecifics = tasksControllerFactory();
+const tasksCreationController = itemsCreationController(tasksView, tasksModel);
+const tasksController = Object.assign({}, tasksControllerSpecifics, tasksCreationController);
+
+tasksController.initialize();
+
+//Everything for lists
+const listsTargetElement = document.getElementById('lists');
+const listsTargetButton = document.getElementById('list-add');
+const listsTargetField = document.getElementById('list-input');
+const initialListsData = [];
+
+const listsViewSpecifics = listsViewFactory(listsTargetElement, listsTargetButton, listsTargetField);
+const listsCreationView = itemsCreationView ('list');
+const listsView = Object.assign({}, listsViewSpecifics, listsCreationView);
+
+const listsModelSpecifics = listsModelFactory();
+const listsCreationModel = itemsCreationModel (initialListsData);
+const listsModel = Object.assign({}, listsModelSpecifics, listsCreationModel);
+
+const listsControllerSpecifics = listsControllerFactory();
+const listsCreationController = itemsCreationController(listsView, listsModel);
+const listsController = Object.assign({}, listsControllerSpecifics, listsCreationController);
+
+listsController.initialize();
 
 /*logic of todo app
 

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "todo": "npx webpack --color && firebase deploy"
+    "build": "webpack && firebase deploy"
   },
   "repository": {
     "type": "git",
