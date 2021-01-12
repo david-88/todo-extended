@@ -1,9 +1,10 @@
 // using ES6 imports:
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import { firebaseConfig } from './config'
-import * as firebaseui from 'firebaseui';
-import 'firebaseui/dist/firebaseui.css'
+// import firebase from 'firebase/app';
+// import 'firebase/auth';
+// import 'firebase/database';
+import { getFirebaseClient } from './config'
+// import * as firebaseui from 'firebaseui';
+// import 'firebaseui/dist/firebaseui.css'
 
 import {tasksViewFactory, listsViewFactory, itemsCreationView} from './view';
 import {tasksModelFactory, listsModelFactory, itemsCreationModel} from './model';
@@ -15,19 +16,17 @@ import {tasksControllerFactory, listsControllerFactory, itemsCreationController}
 // done in HTML however using modules here is more convenient for
 // ensuring sample correctness offline.
 
-//
-// ToDo: we need to find a way how we can use this and that webpack can handle this
-//
-// import * as firebaseui from 'firebaseui'
-// import 'firebaseui/dist/firebaseui.css'
-
-// var firebase = require('firebase');
+// var firebase = require('firebase/app');
 // require('firebase/auth');
+// require('firebase/database');
 // const firebaseui = require('firebaseui');
 // require('firebaseui/dist/firebaseui.css');
 
+// Lazy load firebase
+const firebase = await getFirebaseClient();
+
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
 
 // Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
