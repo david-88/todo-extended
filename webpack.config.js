@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   devtool: 'source-map',
@@ -7,16 +7,16 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist')
   },
   devServer: {
     contentBase: './dist/'
   },
   module: {
-		rules: [
-			{
-				test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
       // use this to make code es5 compatible
       // },
@@ -24,6 +24,6 @@ module.exports = {
       //   test: /\.js$/,
       //   use: ['babel-loader']
       // }
-		]
+    ]
   }
-};
+}
