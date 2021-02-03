@@ -21,6 +21,7 @@ const itemsCreationModel = function (data) {
   }
   const deleteItem = function (itemObjectID) {
     itemObjectID = parseInt(itemObjectID)
+    // eslint-disable-next-line array-callback-return
     const indexItemToDelete = data.findIndex(function (currentItem) {
       if (currentItem.id === itemObjectID) {
         return true

@@ -6,9 +6,9 @@ import { getFirebaseClient } from './config'
 // import * as firebaseui from 'firebaseui';
 // import 'firebaseui/dist/firebaseui.css'
 
-import {tasksViewFactory, listsViewFactory, itemsCreationView} from './view';
-import {tasksModelFactory, listsModelFactory, itemsCreationModel} from './model';
-import {tasksControllerFactory, listsControllerFactory, itemsCreationController} from './controller';
+import { tasksViewFactory, listsViewFactory, itemsCreationView } from './view'
+import { tasksModelFactory, listsModelFactory, itemsCreationModel } from './model'
+import { tasksControllerFactory, listsControllerFactory, itemsCreationController } from './controller'
 
 // Small Firebase Test
 
@@ -23,118 +23,118 @@ import {tasksControllerFactory, listsControllerFactory, itemsCreationController}
 // require('firebaseui/dist/firebaseui.css');
 
 // Lazy load firebase
-const firebase = await getFirebaseClient();
+const firebase = async () => { await getFirebaseClient() }
 
 // Initialize Firebase
 // firebase.initializeApp(firebaseConfig);
 
 // Initialize the FirebaseUI Widget using Firebase.
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
+// eslint-disable-next-line no-undef
+const ui = new firebaseui.auth.AuthUI(firebase.auth())
 
-var uiConfig = 
+const uiConfig =
 {
-    callbacks: {
-      signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-        // User successfully signed in.
-        // Return type determines whether we continue the redirect automatically
-        // or whether we leave that to developer to handle.
-        writeUserData(authResult.user.uid, authResult.user.displayName, authResult.user.email, null);
-        // console.log("Current Authentication: userid:" + authResult.userId + "user email:" + authResult.email);
-        // credential.user.getIdToken().then(function(token) {
-        //     // make api call to backend
-        //     writeUserData(authResult.userId, null, authResult.email, null);
-        //   })
+  callbacks: {
+    signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+      // User successfully signed in.
+      // Return type determines whether we continue the redirect automatically
+      // or whether we leave that to developer to handle.
+      writeUserData(authResult.user.uid, authResult.user.displayName, authResult.user.email, null)
+      // console.log("Current Authentication: userid:" + authResult.userId + "user email:" + authResult.email);
+      // credential.user.getIdToken().then(function(token) {
+      //     // make api call to backend
+      //     writeUserData(authResult.userId, null, authResult.email, null);
+      //   })
 
-        // firebase.auth().createUserWithEmailAndPassword(email, password)
-        // .then((user) => {
-        //     // Signed in 
-        //     // ...
-        // })
-        // .catch((error) => {
-        //     var errorCode = error.code;
-        //     var errorMessage = error.message;
-        //     // ..
-        // });
-        return true;
-      },
-      uiShown: function() {
-        // The widget is rendered.
-        // Hide the loader.
-        document.getElementById('loader').style.display = 'none';
-        console.log("uiShown");
-      }
+      // firebase.auth().createUserWithEmailAndPassword(email, password)
+      // .then((user) => {
+      //     // Signed in
+      //     // ...
+      // })
+      // .catch((error) => {
+      //     var errorCode = error.code;
+      //     var errorMessage = error.message;
+      //     // ..
+      // });
+      return true
     },
-    // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-    signInFlow: 'popup',
-    // signInSuccessUrl: 'https://todo-extended.web.app/',
-    signInOptions: [
-      // Leave the lines as is for the providers you want to offer your users.
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      firebase.auth.EmailAuthProvider.PROVIDER_ID
-    ],
-    // Terms of service url.
-    tosUrl: '<your-tos-url>',
-    // Privacy policy url.
-    privacyPolicyUrl: '<your-privacy-policy-url>'
-};
+    uiShown: function () {
+      // The widget is rendered.
+      // Hide the loader.
+      document.getElementById('loader').style.display = 'none'
+      console.log('uiShown')
+    }
+  },
+  // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+  signInFlow: 'popup',
+  // signInSuccessUrl: 'https://todo-extended.web.app/',
+  signInOptions: [
+    // Leave the lines as is for the providers you want to offer your users.
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    firebase.auth.EmailAuthProvider.PROVIDER_ID
+  ],
+  // Terms of service url.
+  tosUrl: '<your-tos-url>',
+  // Privacy policy url.
+  privacyPolicyUrl: '<your-privacy-policy-url>'
+}
 
 // The start method will wait until the DOM is loaded.
-ui.start('#firebaseui-auth-container', uiConfig);
+ui.start('#firebaseui-auth-container', uiConfig)
 
-function writeUserData(userId, name, email, imageUrl) {
-    firebase.database().ref('users/' + userId).set({
-      username: name,
-      email: email,
-      profile_picture : imageUrl
-    });
-  }
+function writeUserData (userId, name, email, imageUrl) {
+  firebase.database().ref('users/' + userId).set({
+    username: name,
+    email: email,
+    profile_picture: imageUrl
+  })
+}
 
+// Everything for tasks
+const tasksTargetElement = document.getElementById('tasks')
+const tasksTargetButton = document.getElementById('task-add')
+const tasksTargetField = document.getElementById('task-input')
+const initialTasksData = []
 
-//Everything for tasks
-const tasksTargetElement = document.getElementById('tasks');
-const tasksTargetButton = document.getElementById('task-add');
-const tasksTargetField = document.getElementById('task-input');
-const initialTasksData = [];
+const tasksViewSpecifics = tasksViewFactory(tasksTargetElement, tasksTargetButton, tasksTargetField)
+const tasksCreationView = itemsCreationView('task')
+const tasksView = Object.assign({}, tasksViewSpecifics, tasksCreationView)
 
-const tasksViewSpecifics = tasksViewFactory(tasksTargetElement, tasksTargetButton, tasksTargetField);
-const tasksCreationView = itemsCreationView ('task');
-const tasksView = Object.assign({}, tasksViewSpecifics, tasksCreationView);
+const tasksModelSpecifics = tasksModelFactory()
+const tasksCreationModel = itemsCreationModel(initialTasksData)
+const tasksModel = Object.assign({}, tasksModelSpecifics, tasksCreationModel)
 
-const tasksModelSpecifics = tasksModelFactory();
-const tasksCreationModel = itemsCreationModel (initialTasksData);
-const tasksModel = Object.assign({}, tasksModelSpecifics, tasksCreationModel);
+const tasksControllerSpecifics = tasksControllerFactory()
+const tasksCreationController = itemsCreationController(tasksView, tasksModel)
+const tasksController = Object.assign({}, tasksControllerSpecifics, tasksCreationController)
 
-const tasksControllerSpecifics = tasksControllerFactory();
-const tasksCreationController = itemsCreationController(tasksView, tasksModel);
-const tasksController = Object.assign({}, tasksControllerSpecifics, tasksCreationController);
+tasksController.initialize()
 
-tasksController.initialize();
+// Everything for lists
+const listsTargetElement = document.getElementById('lists')
+const listsTargetButton = document.getElementById('list-add')
+const listsTargetField = document.getElementById('list-input')
+const initialListsData = []
 
-//Everything for lists
-const listsTargetElement = document.getElementById('lists');
-const listsTargetButton = document.getElementById('list-add');
-const listsTargetField = document.getElementById('list-input');
-const initialListsData = [];
+const listsViewSpecifics = listsViewFactory(listsTargetElement, listsTargetButton, listsTargetField)
+const listsCreationView = itemsCreationView('list')
+const listsView = Object.assign({}, listsViewSpecifics, listsCreationView)
 
-const listsViewSpecifics = listsViewFactory(listsTargetElement, listsTargetButton, listsTargetField);
-const listsCreationView = itemsCreationView ('list');
-const listsView = Object.assign({}, listsViewSpecifics, listsCreationView);
+const listsModelSpecifics = listsModelFactory()
+const listsCreationModel = itemsCreationModel(initialListsData)
+const listsModel = Object.assign({}, listsModelSpecifics, listsCreationModel)
 
-const listsModelSpecifics = listsModelFactory();
-const listsCreationModel = itemsCreationModel (initialListsData);
-const listsModel = Object.assign({}, listsModelSpecifics, listsCreationModel);
+const listsControllerSpecifics = listsControllerFactory()
+const listsCreationController = itemsCreationController(listsView, listsModel)
+const listsController = Object.assign({}, listsControllerSpecifics, listsCreationController)
 
-const listsControllerSpecifics = listsControllerFactory();
-const listsCreationController = itemsCreationController(listsView, listsModel);
-const listsController = Object.assign({}, listsControllerSpecifics, listsCreationController);
+listsController.initialize()
 
-listsController.initialize();
-
-/*logic of todo app
+/* logic of todo app
 
 1. Describe in your own words what this app should look like and do
 
-    - Look and Feel:    
+    - Look and Feel:
         Top      - task input field with add button
             Later: search field
         Mid      -tasks with delete button
@@ -199,7 +199,6 @@ listsController.initialize();
 
     - Module for taskController
 
-
 PenguinView.prototype.render = function render(viewModel) {
   this.element.innerHTML = '<h3>' + viewModel.name + '</h3>' +
     '<img class="penguin-image" src="' + viewModel.imageUrl +
@@ -243,12 +242,6 @@ taskView.onClickAddTask
 var testModel = ['dfdsfsdfsdf', '23432423432df'];
 
 taskView.render(testModel);
-
-
-
-
-
-
 
 2. Algorithm: Plan how to realize your app - describe code in plain english
 
@@ -337,12 +330,10 @@ taskView.render(testModel);
                               --> if outside: call newList.addTask
                                               call oldList.deleteTask
 
-
         func: addList         --> create new list object with listFactory
         func: list.delete
         func: validateListDelete
         func: validateListEdit
-
 
     - At the end: Module for taskStorage
 
