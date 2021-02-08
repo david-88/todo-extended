@@ -1,32 +1,20 @@
 // using ES6 imports:
-// import firebase from 'firebase/app';
-// import 'firebase/auth';
-// import 'firebase/database';
 import { getFirebaseClient } from './config'
-// import * as firebaseui from 'firebaseui';
-// import 'firebaseui/dist/firebaseui.css'
-
 import { tasksViewFactory, listsViewFactory, itemsCreationView } from './view'
 import { tasksModelFactory, listsModelFactory, itemsCreationModel } from './model'
 import { tasksControllerFactory, listsControllerFactory, itemsCreationController } from './controller'
 
+// Shortcuts to DOM Elements.
+var containerElement = document.getElementById('container');
+
 // Small Firebase Test
-
-// These samples are intended for Web so this import would normally be
-// done in HTML however using modules here is more convenient for
-// ensuring sample correctness offline.
-
-// var firebase = require('firebase/app');
-// require('firebase/auth');
-// require('firebase/database');
-// const firebaseui = require('firebaseui');
-// require('firebaseui/dist/firebaseui.css');
-
 // Lazy load firebase
-const firebase = async () => { await getFirebaseClient() }
-
-// Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
+// this is not working => ToDo: we need to know why
+// const firebase = async () => { await getFirebaseClient() }
+// console.log(firebase)
+// ToDo: We need a better approach
+const firebase = await getFirebaseClient()
+console.log(firebase)
 
 // Initialize the FirebaseUI Widget using Firebase.
 // eslint-disable-next-line no-undef
@@ -39,24 +27,15 @@ const uiConfig =
       // User successfully signed in.
       // Return type determines whether we continue the redirect automatically
       // or whether we leave that to developer to handle.
-      writeUserData(authResult.user.uid, authResult.user.displayName, authResult.user.email, null)
-      // console.log("Current Authentication: userid:" + authResult.userId + "user email:" + authResult.email);
-      // credential.user.getIdToken().then(function(token) {
-      //     // make api call to backend
-      //     writeUserData(authResult.userId, null, authResult.email, null);
-      //   })
+      if (authResult.user) 
+      {
+        handleSignedInUser(authResult.user);
+      }  
 
-      // firebase.auth().createUserWithEmailAndPassword(email, password)
-      // .then((user) => {
-      //     // Signed in
-      //     // ...
-      // })
-      // .catch((error) => {
-      //     var errorCode = error.code;
-      //     var errorMessage = error.message;
-      //     // ..
-      // });
-      return true
+      writeUserData(authResult.user.uid, authResult.user.displayName, authResult.user.email, null)
+      containerElement.removeAttribute('hidden')
+      // Do not redirect.
+      return false;
     },
     uiShown: function () {
       // The widget is rendered.
@@ -82,13 +61,85 @@ const uiConfig =
 // The start method will wait until the DOM is loaded.
 ui.start('#firebaseui-auth-container', uiConfig)
 
-function writeUserData (userId, name, email, imageUrl) {
+function writeUserData (userId, name, email, imageUrl) 
+{
   firebase.database().ref('users/' + userId).set({
     username: name,
     email: email,
     profile_picture: imageUrl
   })
 }
+
+/**
+ * Displays the UI for a signed in user.
+ * @param {!firebase.User} user
+ */
+var handleSignedInUser = function(user) 
+{
+  containerElement.style.display = 'block';
+  document.getElementById('firebaseui-auth-container').style.display = 'none';
+  document.getElementById('name').textContent = user.displayName;
+  document.getElementById('email').textContent = user.email;
+  document.getElementById('phone').textContent = user.phoneNumber;
+
+  if (user.photoURL) 
+  {
+    var photoURL = user.photoURL;
+    // Append size to the photo URL for Google hosted images to avoid requesting
+    // the image with its original resolution (using more bandwidth than needed)
+    // when it is going to be presented in smaller size.
+    if ((photoURL.indexOf('googleusercontent.com') != -1) ||
+        (photoURL.indexOf('ggpht.com') != -1)) 
+    {
+      photoURL = photoURL + '?sz=' + document.getElementById('photo').clientHeight;
+    }
+    document.getElementById('photo').src = photoURL;
+    document.getElementById('photo').style.display = 'block';
+  } 
+  else 
+  {
+    document.getElementById('photo').style.display = 'none';
+  }
+}
+
+/**
+ * Displays the UI for a signed out user.
+ */
+var handleSignedOutUser = function() 
+{
+  containerElement.style.display = 'none';
+  document.getElementById('firebaseui-auth-container').style.display = 'block';
+  ui.start('#firebaseui-auth-container', uiConfig)
+};
+  
+// Listen to change in auth state so it displays the correct UI for when
+// the user is signed in or not.
+firebase.auth().onAuthStateChanged(function(user) 
+{
+  document.getElementById('loader').style.display = 'none';
+  // document.getElementById('loaded').style.display = 'block';
+  user ? handleSignedInUser(user) : handleSignedOutUser();
+});
+
+/**
+ * Deletes the user's account.
+ */
+var deleteAccount = function() 
+{
+  firebase.auth().currentUser.delete().catch(function(error) {
+    if (error.code == 'auth/requires-recent-login') {
+      // The user's credential is too old. She needs to sign in again.
+      firebase.auth().signOut().then(function() {
+        // The timeout allows the message to be displayed after the UI has
+        // changed to the signed out state.
+        setTimeout(function() {
+          alert('Please sign in again to delete your account.');
+        }, 1);
+      });
+    }
+  });
+  // ToDo: delete user in database 
+};
 
 // Everything for tasks
 const tasksTargetElement = document.getElementById('tasks')
@@ -129,6 +180,23 @@ const listsCreationController = itemsCreationController(listsView, listsModel)
 const listsController = Object.assign({}, listsControllerSpecifics, listsCreationController)
 
 listsController.initialize()
+
+
+/**
+ * Initializes the app.
+ */
+var initApp = function() {
+    document.getElementById('sign-out').addEventListener('click', function() 
+    {
+      firebase.auth().signOut();
+    });
+
+    document.getElementById('delete-account').addEventListener('click', function() 
+    {
+       deleteAccount();
+    });
+}
+window.addEventListener('load', initApp);
 
 /* logic of todo app
 
