@@ -14,7 +14,6 @@ var containerElement = document.getElementById('container');
 // console.log(firebase)
 // ToDo: We need a better approach
 const firebase = await getFirebaseClient()
-console.log(firebase)
 
 // Initialize the FirebaseUI Widget using Firebase.
 // eslint-disable-next-line no-undef
@@ -126,19 +125,35 @@ firebase.auth().onAuthStateChanged(function(user)
  */
 var deleteAccount = function() 
 {
-  firebase.auth().currentUser.delete().catch(function(error) {
-    if (error.code == 'auth/requires-recent-login') {
-      // The user's credential is too old. She needs to sign in again.
-      firebase.auth().signOut().then(function() {
-        // The timeout allows the message to be displayed after the UI has
-        // changed to the signed out state.
-        setTimeout(function() {
-          alert('Please sign in again to delete your account.');
-        }, 1);
-      });
+  var user = firebase.auth().currentUser;
+  // delete user in database
+  firebase.database().ref('users/' + user.uid).remove().then(function(error)
+  {
+    if (error)
+    {
+      console.log(error.message)
     }
-  });
-  // ToDo: delete user in database 
+    else
+    {
+      // delete firebase user authentication
+      firebase.auth().currentUser.delete().catch(function(error) 
+      {
+        if (error.code == 'auth/requires-recent-login') 
+        {
+          // The user's credential is too old. She needs to sign in again.
+          firebase.auth().signOut().then(function() {
+            // The timeout allows the message to be displayed after the UI has
+            // changed to the signed out state.
+            setTimeout(function() 
+            {
+              alert('Please sign in again to delete your account.')
+            }, 1);
+          });
+        }
+      });
+      alert('Your account was successfully deleted.')
+    }
+  });   
 };
 
 // Everything for tasks
