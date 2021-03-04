@@ -11,14 +11,31 @@ const listsModelFactory = function () {
 // Model-Mixin to create items for tasks, lists, undertasks
 const itemsCreationModel = function (data) {
   const creationCounter = 0
+  let dbRef = ''
+
+  const initialize = function (databaseRef) {
+    dbRef = databaseRef
+  }
+
   const addItem = function (itemText) {
     const newItemObject = {
       id: this.creationCounter,
-      text: itemText
+      text: itemText,
     }
-    data.push(newItemObject)
+    // data.push(newItemObject)
+
+    dbRef.push(newItemObject)
     this.creationCounter++
   }
+
+  const formatDbData = function (snap) {
+    const dbDataArray = []
+    snap.forEach((task) => {
+      dbDataArray.push(task.val())
+    })
+    return dbDataArray
+  }
+
   const deleteItem = function (itemObjectID) {
     itemObjectID = parseInt(itemObjectID)
     // eslint-disable-next-line array-callback-return
@@ -29,18 +46,24 @@ const itemsCreationModel = function (data) {
     })
     data.splice(indexItemToDelete, 1)
   }
-  return { data, addItem, deleteItem, creationCounter }
+  return {
+    initialize,
+    data,
+    addItem,
+    formatDbData,
+    deleteItem,
+    creationCounter,
+  }
 }
 
 // Model-Mixin to validate user input for tasks, lists, undertasks
 const itemValidationModel = function () {
-  return {
-
-  }
+  return {}
 }
 
 export {
-  itemsCreationModel, itemValidationModel,
-  tasksModelFactory, listsModelFactory
-
+  itemsCreationModel,
+  itemValidationModel,
+  tasksModelFactory,
+  listsModelFactory,
 }

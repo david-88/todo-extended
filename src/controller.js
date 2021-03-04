@@ -5,39 +5,41 @@ const tasksControllerFactory = function () {
 
 // Code specifically for lists
 const listsControllerFactory = function () {
-  return {
-
-  }
+  return {}
 }
 
 // Controller-Mixin to create items for tasks, lists, undertasks
-const itemsCreationController = function (itemsView, itemsModel) {
-  function onClickAddItem () {
+const itemsCreationController = function (itemsView, itemsModel, fbRef) {
+  function onClickAddItem() {
     itemsView.setNewItemText()
     itemsModel.addItem(itemsView.newItemText)
-    itemsView.renderExistingItems(itemsModel.data)
+    // itemsView.renderExistingItems(itemsModel.data)
   }
-  function onClickDeleteItem (event) {
+  function onClickDeleteItem(event) {
     const itemToDeleteID = event.target.dataset.itemid
     itemsModel.deleteItem(itemToDeleteID)
     itemsView.renderExistingItems(itemsModel.data)
   }
-  function initialize () {
+  function initialize() {
     itemsView.onClickAddItem = onClickAddItem
     itemsView.onClickDeleteItem = onClickDeleteItem
+    itemsModel.initialize(fbRef)
     itemsView.initialize()
+    createDbOnChangeListener()
+  }
+
+  function createDbOnChangeListener() {
+    fbRef.on('value', (dBData) => {
+      const dbDataArray = itemsModel.formatDbData(dBData)
+      itemsView.renderExistingItems(dbDataArray)
+    })
   }
   return { initialize }
 }
 
-// Controller-Mixin to validate user input for tasks, lists, undertasks
-const itemValidationController = function () {
-  return {
-
-  }
-}
-
 export {
-  itemsCreationController, itemValidationController,
-  listsControllerFactory, tasksControllerFactory
+  itemsCreationController,
+  // itemValidationController,
+  listsControllerFactory,
+  tasksControllerFactory,
 }
