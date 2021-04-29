@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-04-28T07:48:19.672Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36" etag="pHGDx1x9QNjxz_3tEvQb" version="14.6.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-04-29T05:53:42.085Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36" etag="Pe-Pg5Uxu6XpKIczKUco" version="14.6.0" type="github">
   <diagram id="eOCSV4TAboX4JURnP9C4" name="Seite-1">
-    <mxGraphModel dx="1422" dy="772" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2350" dy="1063" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -112,7 +112,7 @@
         </mxCell>
         <UserObject label="Authentication Part?" lucidchartObjectId="DZRtS0Nv-I5Q" id="hnSfwi1Ho9SDqRFrZ4Va-55">
           <mxCell style="html=1;overflow=block;blockSpacing=1;whiteSpace=wrap;shadow=1;whiteSpace=wrap;fontSize=13;spacing=3.8;strokeColor=none;fillColor=#FFECA9;strokeWidth=0;" parent="1" vertex="1">
-            <mxGeometry x="45" y="1414" width="195" height="195" as="geometry" />
+            <mxGeometry x="40" y="1399" width="195" height="195" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="Where to put config.js?" lucidchartObjectId="-0jusw2t4aRP" id="hnSfwi1Ho9SDqRFrZ4Va-56">
@@ -297,17 +297,34 @@
         <mxCell id="wDRCrtRSsD-gu7L2LAHD-9" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;span style=&quot;color: rgb(51 , 51 , 51) ; text-align: left&quot;&gt;&lt;b&gt;listmapper.js&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
           <mxGeometry x="1440" y="535" width="190" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="OEoPCOcCKwvquQqbMAhU-2" value="" style="endArrow=classic;startArrow=classic;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="fGt8f_qGY14LkmYrRQs4-15" target="enc0Eu9jCuy0b9Ykru_g-4">
+        <mxCell id="OEoPCOcCKwvquQqbMAhU-2" value="" style="endArrow=classic;startArrow=classic;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="fGt8f_qGY14LkmYrRQs4-15" target="enc0Eu9jCuy0b9Ykru_g-4" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="425" y="900" as="sourcePoint" />
             <mxPoint x="450" y="820" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="OEoPCOcCKwvquQqbMAhU-3" value="" style="endArrow=classic;startArrow=classic;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="enc0Eu9jCuy0b9Ykru_g-4" target="c57WbjZJF1XwjpGA7Uo2-17">
+        <mxCell id="OEoPCOcCKwvquQqbMAhU-3" value="" style="endArrow=classic;startArrow=classic;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="enc0Eu9jCuy0b9Ykru_g-4" target="c57WbjZJF1XwjpGA7Uo2-17" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="400" y="530" as="sourcePoint" />
             <mxPoint x="450" y="480" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <UserObject label="In itemcontroller.js/itemview.js statt (control) (handler)? Auf Tanias Code ist dann einfacher Bezug zu nehmen.&lt;br&gt;&lt;br&gt;In itemview.js: Was soll control in renderAll/renderEdit/renderDelete sein? In renderAll müsste eher eine itemList rein, also renderAll(itemList)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;" lucidchartObjectId="DZRtS0Nv-I5Q" id="LLahykPHCn6LXuS7td7--1">
+          <mxCell style="html=1;overflow=block;blockSpacing=1;whiteSpace=wrap;shadow=1;whiteSpace=wrap;fontSize=13;spacing=3.8;strokeColor=#b85450;fillColor=#f8cecc;strokeWidth=0;gradientColor=#ea6b66;" vertex="1" parent="1">
+            <mxGeometry x="-330" y="627" width="195" height="320" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="LLahykPHCn6LXuS7td7--2" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;span style=&quot;font-weight: 700&quot;&gt;itemcontroller.js (Abstract Class)&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;strike&gt;&lt;font color=&quot;#3333ff&quot;&gt;- onClickCreateItem&lt;/font&gt;&lt;/strike&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;-&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- handleCreate(&lt;font color=&quot;#3333ff&quot;&gt;text&lt;/font&gt;)&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- handleEdit(&lt;font color=&quot;#3333ff&quot;&gt;jd, text&lt;/font&gt;&lt;span&gt;)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- handleDelete(&lt;font color=&quot;#3333ff&quot;&gt;id&lt;/font&gt;)&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-460" y="1090" width="190" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="LLahykPHCn6LXuS7td7--3" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;span style=&quot;font-weight: 700&quot;&gt;itemview.js (Abstract Class)&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ container: HTMLElement&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ inputField&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;+ createItemButton&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ renderAll(&lt;font color=&quot;#3333ff&quot;&gt;itemList&lt;/font&gt;)&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- renderEdit(&lt;font color=&quot;#3333ff&quot;&gt;item&lt;/font&gt;)&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;-&amp;nbsp;renderDeleteButton(&lt;font color=&quot;#3333ff&quot;&gt;item&lt;/font&gt;)&amp;nbsp;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- bindCreate(&lt;font color=&quot;#3333ff&quot;&gt;handler&lt;/font&gt;)&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- bindEdit(&lt;font color=&quot;#3333ff&quot;&gt;handler&lt;/font&gt;)&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- bindDelete(&lt;font color=&quot;#3333ff&quot;&gt;handlerl&lt;/font&gt;)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="-460" y="1240" width="190" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="LLahykPHCn6LXuS7td7--4" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;b style=&quot;color: rgb(51 , 51 , 51)&quot;&gt;taskcontroller.js&lt;/b&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;span style=&quot;text-align: center&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;- handleDone&lt;font color=&quot;#3333ff&quot;&gt;(id)&lt;/font&gt;&lt;/font&gt;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-180" y="1109" width="190" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="LLahykPHCn6LXuS7td7--5" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;span style=&quot;font-weight: 700&quot;&gt;taskview.js&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- renderTask?&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;- renderDone&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- bindDone&lt;font color=&quot;#3333ff&quot;&gt;(handler)&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="-180" y="1228" width="190" height="102" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
