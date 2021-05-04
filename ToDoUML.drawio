@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-04-29T18:05:49.529Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36" etag="DlXe9m5ToJ7r_ppe3GN9" version="14.6.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-05-04T11:31:49.048Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36" etag="15N9Mg611svAh8-h5QZE" version="14.6.9" type="github">
   <diagram id="eOCSV4TAboX4JURnP9C4" name="Seite-1">
-    <mxGraphModel dx="2858" dy="1109" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1944" dy="1063" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -310,19 +310,24 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="KFH-cUbPCu32tnA_whq--1" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;span style=&quot;font-weight: 700&quot;&gt;item.js (Abstract Class)&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;span&gt;- title:string = defaultValue&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- id:string&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- CRUD Aktionen&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- &lt;font color=&quot;#3333ff&quot;&gt;bindListChanged(callback)&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font color=&quot;#3333ff&quot;&gt;- onListChanged(list)&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-330" y="510.38" width="190" height="120" as="geometry" />
+          <mxGeometry x="-330" y="550" width="190" height="120" as="geometry" />
         </mxCell>
         <UserObject label="Model und Controller verbinden können wir nicht genauso machen wie Tania. (Siehe unten) Wir haben nämlich keine Liste im Model vorgesehen. Außer wir nehmen die onChange Methode in firebase die den Controller triggert und eine Liste übergibt.&lt;br&gt;&lt;br&gt;Könnten wir es alternativ so gestalten wie oben? onItemChanged(item) müsste dann firebase-Aufruf machen und Liste dort aktualisieren. Und Firebase müsste dann an Controller aktualisierte Liste übergeben oder? Soll Firebase wirklich direkt mit Controller interagieren? Nicht eher noch ein Model für eine lokale Liste? Oder lokale Liste ohne Model?" lucidchartObjectId="DZRtS0Nv-I5Q" id="KFH-cUbPCu32tnA_whq--2">
           <mxCell style="html=1;overflow=block;blockSpacing=1;whiteSpace=wrap;shadow=1;whiteSpace=wrap;fontSize=13;spacing=3.8;strokeColor=#b85450;fillColor=#f8cecc;strokeWidth=0;gradientColor=#ea6b66;" parent="1" vertex="1">
-            <mxGeometry x="-335" y="159" width="195" height="330" as="geometry" />
+            <mxGeometry x="-335" y="174" width="195" height="346" as="geometry" />
           </mxCell>
         </UserObject>
         <mxCell id="KFH-cUbPCu32tnA_whq--3" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;span style=&quot;font-weight: 700&quot;&gt;item.js (Abstract Class)&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;span&gt;- title:string = defaultValue&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- id:string&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- CRUD Aktionen&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- &lt;font color=&quot;#3333ff&quot;&gt;bindItemChanged(callback)&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font color=&quot;#3333ff&quot;&gt;- onItemChanged(item)&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
           <mxGeometry x="-335" y="30" width="190" height="120" as="geometry" />
         </mxCell>
         <UserObject label="&lt;font color=&quot;#333333&quot;&gt;renderTask und renderList soll dann von renderAll verwendet werden, um die unterschiede zwischen den Components(List/Task) abzudecken&lt;/font&gt;" lucidchartObjectId="DZRtS0Nv-I5Q" id="jKMPmXlzX0cM_ZR4EKfv-1">
-          <mxCell style="html=1;overflow=block;blockSpacing=1;whiteSpace=wrap;shadow=1;whiteSpace=wrap;fontSize=13;spacing=3.8;strokeColor=none;fillColor=#FFECA9;strokeWidth=0;" vertex="1" parent="1">
+          <mxCell style="html=1;overflow=block;blockSpacing=1;whiteSpace=wrap;shadow=1;whiteSpace=wrap;fontSize=13;spacing=3.8;strokeColor=none;fillColor=#FFECA9;strokeWidth=0;" parent="1" vertex="1">
             <mxGeometry x="1670" y="1384" width="210" height="210" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;b&gt;Gedanken vom 04.05.21&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ich würde taskmodel und listmodel konzeptionell ändern. Dass jeweils eine Liste drin ist mit allen existierenden items. So hat eine lokale Liste ihren Platz.&amp;nbsp;&lt;br&gt;&lt;br&gt;Und bei jeder CRUD-Aktion irgendeines Items soll diese neue veränderte Liste vom Controller an die entsprechende renderAll() übergeben werden. (Doch genauso wie bei Tania ;))&lt;br&gt;&lt;br&gt;Bei jeder Crud-Aktion lokal oder remote sol diese lokale Liste zudem mit der LIste auf Firebase gesynched werden." lucidchartObjectId="DZRtS0Nv-I5Q" id="cVhi8wcaH5eRdvrwjW1l-1">
+          <mxCell style="html=1;overflow=block;blockSpacing=1;whiteSpace=wrap;shadow=1;whiteSpace=wrap;fontSize=13;spacing=3.8;strokeColor=#82b366;fillColor=#d5e8d4;strokeWidth=0;gradientColor=#D5FF73;" vertex="1" parent="1">
+            <mxGeometry x="-580" y="174" width="215" height="346" as="geometry" />
           </mxCell>
         </UserObject>
       </root>
