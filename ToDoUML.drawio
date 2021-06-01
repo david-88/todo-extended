@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-05-21T12:28:40.993Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36" etag="-v9TMypLvgSNP7LYmfx2" version="14.6.10" type="github">
+<mxfile host="app.diagrams.net" modified="2021-06-01T09:05:34.245Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36" etag="FDtFXA4TNNzIVjuuIGB_" version="14.7.3" type="github">
   <diagram id="eOCSV4TAboX4JURnP9C4" name="Seite-1">
-    <mxGraphModel dx="2500" dy="908" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3975" dy="1396" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -112,12 +112,12 @@
         </mxCell>
         <UserObject label="Authentication Part?" lucidchartObjectId="DZRtS0Nv-I5Q" id="hnSfwi1Ho9SDqRFrZ4Va-55">
           <mxCell style="html=1;overflow=block;blockSpacing=1;whiteSpace=wrap;shadow=1;whiteSpace=wrap;fontSize=13;spacing=3.8;strokeColor=none;fillColor=#FFECA9;strokeWidth=0;" parent="1" vertex="1">
-            <mxGeometry x="187.5" y="1656" width="195" height="195" as="geometry" />
+            <mxGeometry x="-827" y="20" width="195" height="195" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="Where to put config.js?" lucidchartObjectId="-0jusw2t4aRP" id="hnSfwi1Ho9SDqRFrZ4Va-56">
           <mxCell style="html=1;overflow=block;blockSpacing=1;whiteSpace=wrap;shadow=1;whiteSpace=wrap;fontSize=13;spacing=3.8;strokeColor=none;fillColor=#FFECA9;strokeWidth=0;" parent="1" vertex="1">
-            <mxGeometry x="440" y="1656" width="195" height="195" as="geometry" />
+            <mxGeometry x="-827" y="240" width="195" height="195" as="geometry" />
           </mxCell>
         </UserObject>
         <mxCell id="hnSfwi1Ho9SDqRFrZ4Va-65" value="usercontroller.js" style="html=1;overflow=block;blockSpacing=1;whiteSpace=wrap;swimlane;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;fontStyle=0;marginBottom=0;swimlaneFillColor=#ffffff;startSize=25;whiteSpace=wrap;fontSize=13;fontColor=#333333;align=center;whiteSpace=wrap;align=left;spacing=0;strokeColor=#333333;strokeOpacity=100;fillOpacity=100;fillColor=#ffffff;strokeWidth=1.5;shadow=0;sketch=0;textOpacity=50;" parent="1" vertex="1">
@@ -142,11 +142,6 @@
             <mxGeometry width="100" height="100" relative="1" as="geometry">
               <Array as="points" />
             </mxGeometry>
-          </mxCell>
-        </UserObject>
-        <UserObject label="(6)&lt;br&gt;Überlegung ob wir Statischen Inhalt wie User Daten direkt in die Index.html schreiben oder eigener User MVC Part." lucidchartObjectId="y2muuLLlZN~S" id="hnSfwi1Ho9SDqRFrZ4Va-79">
-          <mxCell style="html=1;overflow=block;blockSpacing=1;whiteSpace=wrap;shadow=1;whiteSpace=wrap;fontSize=13;spacing=3.8;strokeColor=none;fillColor=#FFECA9;strokeWidth=0;" parent="1" vertex="1">
-            <mxGeometry x="956" y="1410" width="194" height="190" as="geometry" />
           </mxCell>
         </UserObject>
         <mxCell id="hnSfwi1Ho9SDqRFrZ4Va-87" value="&lt;div style=&quot;display: flex; justify-content: center; text-align: center; align-items: baseline; font-size: 0; line-height: 1.25;margin-top: -2px;&quot;&gt;&lt;span&gt;&lt;span style=&quot;font-size:13px;color:#333333;&quot;&gt;index.html&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;arcSize=20;whiteSpace=wrap;overflow=block;blockSpacing=1;html=1;fontSize=13;spacing=0;strokeColor=#333333;strokeOpacity=100;fillOpacity=100;fillColor=#ffffff;strokeWidth=1.5;" parent="1" vertex="1">
@@ -235,11 +230,6 @@
         <mxCell id="fGt8f_qGY14LkmYrRQs4-28" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;span style=&quot;color: rgb(51 , 51 , 51) ; text-align: left&quot;&gt;&lt;b&gt;listview.js&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;span style=&quot;color: rgb(51 , 51 , 51) ; text-align: center&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;- renderList &lt;sup&gt;5&lt;/sup&gt;&lt;/font&gt;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;shadow=0;" parent="1" vertex="1">
           <mxGeometry x="1150" y="1109" width="190" height="100" as="geometry" />
         </mxCell>
-        <UserObject label="(3)&lt;br&gt;renderAll und renderEdit/renderDeleteButton in einer Methode machen?" lucidchartObjectId="DZRtS0Nv-I5Q" id="fGt8f_qGY14LkmYrRQs4-34">
-          <mxCell style="html=1;overflow=block;blockSpacing=1;whiteSpace=wrap;shadow=1;whiteSpace=wrap;fontSize=13;spacing=3.8;strokeColor=none;fillColor=#FFECA9;strokeWidth=0;" parent="1" vertex="1">
-            <mxGeometry x="187.5" y="1410" width="210" height="196" as="geometry" />
-          </mxCell>
-        </UserObject>
         <mxCell id="fGt8f_qGY14LkmYrRQs4-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;sketch=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;shadow=0;" parent="1" source="fGt8f_qGY14LkmYrRQs4-38" target="hnSfwi1Ho9SDqRFrZ4Va-40" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
@@ -284,11 +274,6 @@
         <mxCell id="wDRCrtRSsD-gu7L2LAHD-6" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;span style=&quot;color: rgb(51 , 51 , 51) ; text-align: left&quot;&gt;&lt;b&gt;taskmapper.js &lt;sup&gt;4&lt;/sup&gt;&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;color: rgb(51 , 51 , 51) ; font-weight: 700 ; text-align: center ; display: flex ; justify-content: center ; align-items: baseline ; line-height: 1.25 ; margin-top: -2px&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(51 , 51 , 51) ; font-weight: 700 ; text-align: center ; display: flex ; justify-content: center ; align-items: baseline ; line-height: 1.25 ; margin-top: -2px&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
           <mxGeometry x="870" y="537" width="190" height="100" as="geometry" />
         </mxCell>
-        <UserObject label="&lt;span style=&quot;color: rgb(51 , 51 , 51)&quot;&gt;(4)&lt;br&gt;task/listmapper&lt;br&gt;Database Mapper um Datenbankaktionen auszuführen (evtl. Interface)&lt;/span&gt;" lucidchartObjectId="DZRtS0Nv-I5Q" id="wDRCrtRSsD-gu7L2LAHD-7">
-          <mxCell style="html=1;overflow=block;blockSpacing=1;whiteSpace=wrap;shadow=1;whiteSpace=wrap;fontSize=13;spacing=3.8;strokeColor=none;fillColor=#FFECA9;strokeWidth=0;" parent="1" vertex="1">
-            <mxGeometry x="440" y="1410" width="210" height="190" as="geometry" />
-          </mxCell>
-        </UserObject>
         <mxCell id="wDRCrtRSsD-gu7L2LAHD-9" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;span style=&quot;color: rgb(51 , 51 , 51) ; text-align: left&quot;&gt;&lt;b&gt;listmapper.js &lt;sup&gt;4&lt;/sup&gt;&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font style=&quot;font-size: 12px&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
           <mxGeometry x="1440" y="535" width="190" height="100" as="geometry" />
         </mxCell>
@@ -315,11 +300,6 @@
         <mxCell id="KFH-cUbPCu32tnA_whq--3" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;span style=&quot;font-weight: 700&quot;&gt;item.js (Abstract Class)&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;span&gt;- title:string = defaultValue&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- id:string&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- CRUD Aktionen&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- &lt;font color=&quot;#3333ff&quot;&gt;bindItemChanged(callback)&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;font color=&quot;#3333ff&quot;&gt;- onItemChanged(item)&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
           <mxGeometry x="-335" y="30" width="190" height="120" as="geometry" />
         </mxCell>
-        <UserObject label="&lt;font color=&quot;#333333&quot;&gt;(5)&lt;br&gt;renderTask und renderList soll dann von renderAll verwendet werden, um die unterschiede zwischen den Components(List/Task) abzudecken&lt;/font&gt;" lucidchartObjectId="DZRtS0Nv-I5Q" id="jKMPmXlzX0cM_ZR4EKfv-1">
-          <mxCell style="html=1;overflow=block;blockSpacing=1;whiteSpace=wrap;shadow=1;whiteSpace=wrap;fontSize=13;spacing=3.8;strokeColor=none;fillColor=#FFECA9;strokeWidth=0;" parent="1" vertex="1">
-            <mxGeometry x="697.5" y="1410" width="210" height="190" as="geometry" />
-          </mxCell>
-        </UserObject>
         <UserObject label="&lt;b&gt;Gedanken vom 04.05.21&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ich würde taskmodel und listmodel konzeptionell ändern. Dass jeweils eine Liste drin ist mit allen existierenden items. So hat eine lokale Liste ihren Platz.&amp;nbsp;&lt;br&gt;&lt;br&gt;Und bei jeder CRUD-Aktion irgendeines Items soll diese neue veränderte Liste vom Controller an die entsprechende renderAll() übergeben werden. (Doch genauso wie bei Tania ;))&lt;br&gt;&lt;br&gt;Bei jeder Crud-Aktion lokal oder remote sol diese lokale Liste zudem mit der LIste auf Firebase gesynched werden." lucidchartObjectId="DZRtS0Nv-I5Q" id="cVhi8wcaH5eRdvrwjW1l-1">
           <mxCell style="html=1;overflow=block;blockSpacing=1;whiteSpace=wrap;shadow=1;whiteSpace=wrap;fontSize=13;spacing=3.8;strokeColor=#82b366;fillColor=#d5e8d4;strokeWidth=0;gradientColor=#D5FF73;" parent="1" vertex="1">
             <mxGeometry x="-580" y="174" width="215" height="346" as="geometry" />
@@ -330,8 +310,8 @@
             <mxGeometry x="-140" y="1540" width="295" height="250" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="yDsfUBNP6iZW4Qr7T4tl-2" value="&lt;font style=&quot;font-size: 18px&quot;&gt;Fußnoten:&lt;br&gt;&lt;/font&gt;&lt;div&gt;&lt;span&gt;&lt;font size=&quot;3&quot;&gt;1. Gibt an zu welcher Liste der Task zugeordnet ist&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;font size=&quot;3&quot;&gt;2. Für die Reihenfolge der Liste/Tasks&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" parent="1" vertex="1">
-          <mxGeometry x="-125" y="1915" width="370" height="50" as="geometry" />
+        <mxCell id="yDsfUBNP6iZW4Qr7T4tl-2" value="&lt;font style=&quot;font-size: 18px&quot;&gt;&lt;b&gt;Fußnoten:&lt;/b&gt; (&lt;font color=&quot;#3333ff&quot;&gt;F für offene Fragen&lt;/font&gt;)&lt;br&gt;&lt;/font&gt;&lt;div&gt;&lt;span&gt;&lt;font size=&quot;3&quot;&gt;1. Gibt an zu welcher Liste der Task zugeordnet ist.&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;font size=&quot;3&quot;&gt;2. Für die Reihenfolge der Liste/Tasks.&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 16px&quot;&gt;&lt;font color=&quot;#3333ff&quot;&gt;&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;span style=&quot;text-align: center&quot;&gt;3. In eine Methode:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-align: center&quot;&gt;renderAll und renderEdit/renderDeleteButton&lt;/span&gt;&lt;/font&gt;&lt;span style=&quot;text-align: center&quot;&gt;? (F)&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 16px&quot;&gt;&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;span style=&quot;color: rgb(51 , 51 , 51) ; text-align: center&quot;&gt;4. Database Mapper um Datenbankaktion auszuführen:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(51 , 51 , 51) ; text-align: center&quot;&gt;task/listmapper&lt;/span&gt;&lt;span style=&quot;color: rgb(51 , 51 , 51) ; text-align: center&quot;&gt;&amp;nbsp;(evtl. Interface)&lt;/span&gt;&lt;span style=&quot;text-align: center&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 16px&quot;&gt;&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;span style=&quot;color: rgb(51 , 51 , 51) ; text-align: center&quot;&gt;5. U&lt;/span&gt;&lt;/font&gt;&lt;span style=&quot;color: rgb(51 , 51 , 51) ; text-align: center&quot;&gt;m die unterschiede zwischen den Components(List/Task) abzudecken:&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 16px&quot;&gt;&lt;span style=&quot;color: rgb(51 , 51 , 51) ; text-align: center&quot;&gt;&amp;nbsp; &amp;nbsp; renderTask und renderList soll dann von renderAll verwendet werden.&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 16px&quot;&gt;&lt;font color=&quot;#3333ff&quot;&gt;&lt;span style=&quot;text-align: center&quot;&gt;6.&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-align: center&quot;&gt;Überlegung ob wir Statischen Inhalt wie User Daten direkt in die Index.html schreiben oder eigener User MVC Part. (F)&lt;/span&gt;&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="250" y="1590" width="870" height="120" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
