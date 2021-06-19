@@ -20,7 +20,7 @@ const itemsCreationModel = function (data) {
   const addItem = function (itemText) {
     const newItemObject = {
       id: this.creationCounter,
-      text: itemText,
+      text: itemText
     }
     // data.push(newItemObject)
 
@@ -52,7 +52,7 @@ const itemsCreationModel = function (data) {
     addItem,
     formatDbData,
     deleteItem,
-    creationCounter,
+    creationCounter
   }
 }
 
@@ -65,5 +65,5 @@ export {
   itemsCreationModel,
   itemValidationModel,
   tasksModelFactory,
-  listsModelFactory,
+  listsModelFactory
 }

@@ -3,7 +3,7 @@ const tasksViewFactory = function (htmlElement, addButton, inputField) {
   return {
     htmlElement,
     addButton,
-    inputField,
+    inputField
   }
 }
 
@@ -12,7 +12,7 @@ const listsViewFactory = function (htmlElement, addButton, inputField) {
   return {
     htmlElement,
     addButton,
-    inputField,
+    inputField
   }
 }
 
@@ -21,18 +21,18 @@ const itemsCreationView = function (itemName) {
   const onClickAddItem = null
   const onClickDeleteItem = null
 
-  function initialize() {
+  function initialize () {
     this.addButton.addEventListener('click', this.onClickAddItem)
   }
-  function setNewItemText() {
+  function setNewItemText () {
     this.newItemText = this.inputField.value
   }
-  function renderExistingItems(viewModel) {
+  function renderExistingItems (viewModel) {
     this.inputField.value = ''
     this.htmlElement.innerHTML = ''
     viewModel.forEach(renderOneItem, this)
   }
-  function renderOneItem(itemObject) {
+  function renderOneItem (itemObject) {
     const itemID = itemObject.id
     const p = document.createElement('p')
     const deleteButton = document.createElement('button')
@@ -53,7 +53,7 @@ const itemsCreationView = function (itemName) {
     setNewItemText,
     renderExistingItems,
     onClickAddItem,
-    onClickDeleteItem,
+    onClickDeleteItem
   }
 }
 
@@ -66,5 +66,5 @@ export {
   itemsCreationView,
   itemValidationView,
   listsViewFactory,
-  tasksViewFactory,
+  tasksViewFactory
 }
