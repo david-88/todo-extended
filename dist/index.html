@@ -3,11 +3,36 @@
     <head>
         <meta charset="utf-8">
         <title>Todos</title>
+
+        <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" /> -->
+        <!-- <script src="../node_modules/firebaseui/dist/firebaseui.js"></script> -->
+        <!-- <link type="text/css" rel="stylesheet" href="../node_modules/firebaseui/dist/firebaseui.css"> -->
+
         <link rel="stylesheet" href="reset.css">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div id="container">
+        <!-- The surrounding HTML is left untouched by FirebaseUI.
+        Your app may use that space for branding, controls and other customizations.-->
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader">Loading...</div>
+        <div id="container" hidden="true">
+            <div id="user-signed-in">
+                <div id="user-info">
+                  <div id="photo-container">
+                    <img id="photo">
+                  </div>
+                  <div id="name"></div>
+                  <div id="email"></div>
+                  <div id="phone"></div>
+                  <div id="is-new-user"></div>
+                  <div class="clearfix"></div>
+                </div>
+                <p>
+                  <button id="sign-out">Sign Out</button>
+                  <button id="delete-account">Delete account</button>
+                </p>
+            </div>
             <div id="list-container">
                 <button id="list-add">+</button>
                 <input type="text" id="list-input" placeholder="Add a list">
@@ -19,16 +44,24 @@
                 <div id="tasks"></div>
             </div>
         </div>
-        <script src="main.js"></script>
 
         <!-- Firebase part -->
+        <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
         <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="/__/firebase/8.2.1/firebase-app.js"></script>
+        <!-- <script src="/__/firebase/8.2.1/firebase-app.js"></script> -->
 
         <!-- TODO: Add SDKs for Firebase products that you want to use
             https://firebase.google.com/docs/web/setup#available-libraries -->
+        <!-- <script src="/__/firebase/8.2.1/firebase-auth.js"></script>
+        <script src="/__/firebase/8.2.1/firebase-database.js"></script> -->
 
         <!-- Initialize Firebase -->
-        <script src="/__/firebase/init.js"></script>
+        <!-- <script src="/__/firebase/init.js"></script> -->
+
+        <!-- Firebaseui -->
+        <!-- <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script> -->
+
+        <!-- Main App -->
+        <script src="main.js"></script>
     </body>
 </html>
