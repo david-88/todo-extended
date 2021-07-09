@@ -1,11 +1,34 @@
-const Item = require('../src/item')
+const Item = require('../src/itemmodel')
 const assert = require('assert').strict
 
 describe('integration test', function () {
-  it('should be able to get the title', function () {
-    const item = new Item('myItem')
-    const title = item.getTitle()
-    assert.strictEqual(title, 'myItem')
+  describe('title tests', function () {
+    xit('should be able to get the title', function () {
+      const item = new Item('myItem')
+      const title = item.getTitle()
+      assert.strictEqual(title, 'myItem')
+    })
+
+    xit('should be able to change the title', function () {
+      const item = new Item('myItem')
+      item.setTitle('myChangedItem')
+      const title = item.getTitle()
+      assert.strictEqual(title, 'myChangedItem')
+    })
+
+    xit('should throw error if more than 255 title chars', function () {
+      const createError = () => {
+        const item = new Item('More then 255 a\'s: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+      }
+      assert.throws(createError, new Error('too many characters'))
+    })
+
+    xit('should throw error if no title chars', function () {
+      const createError = () => {
+        const item = new Item('')
+      }
+      assert.throws(createError, new Error('no characters'))
+    })
   })
 
   xit('should be able to get the id', function () {
